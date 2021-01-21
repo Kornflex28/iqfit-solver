@@ -39,6 +39,9 @@ class Piece:
             piece[y, x, z] = 1
         return piece
 
+    def translate_piece(self,dx=0,dy=0):
+        return Piece(self.name,{(x+dx,y+dy,z) for x,y,z in self.coordinates})
+
     def get_transformations(self):
         piece = self.to_array()
         piece_rot3D = self.from_array_rotate_3D(piece)
