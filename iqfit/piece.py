@@ -47,12 +47,21 @@ class Piece:
         piece_rot3D = self.from_array_rotate_3D(piece)
         return [self.from_array_to_coordinates(array) for array in self.from_array_get_2D_rotations(piece)+self.from_array_get_2D_rotations(piece_rot3D)]
 
+    def get_transformations_2D(self):
+        piece = self.to_array()
+        piece_rot3D = self.from_array_rotate_3D(piece)
+        return [self.from_array_to_2D_coordinates(array) for array in self.from_array_get_2D_rotations(piece)+self.from_array_get_2D_rotations(piece_rot3D)]
+
     def get_2D_coordinates(self):
         return {(x,y) for x,y,z in self.coordinates if z==0}
 
     @classmethod
     def from_array_to_coordinates(cls,array):
         return set([(y, x, z) for x in range(array.shape[0]) for y in range(array.shape[1]) for z in range(array.shape[2]) if array[x, y, z]])
+
+    @classmethod
+    def from_array_to_2D_coordinates(cls,array):
+        return set([(y, x) for x in range(array.shape[0]) for y in range(array.shape[1]) if array[x, y, 0]])
 
     @classmethod
     def from_array(cls, name, array):
@@ -77,15 +86,15 @@ class Piece:
                                          (2, 0, 0), (3, 0, 0), (2, 1, 0), (3, 1, 0)}),
                 "Red": cls("Red", {(0, 0, 0), (0, 0, 1), (1, 0, 0),
                                    (2, 0, 0), (3, 0, 0), (3, 0, 1), (0, 1, 0)}),
-                "Sky": cls("Sky", {(0, 0, 0), (0, 0, 1), (1, 0, 0),
+                "DeepSkyBlue": cls("DeepSkyBlue", {(0, 0, 0), (0, 0, 1), (1, 0, 0),
                                    (2, 0, 0), (2, 0, 1), (3, 0, 0), (0, 1, 0)}),
                 "Magenta": cls("Magenta", {(0, 0, 0), (1, 0, 0), (1, 0, 1),
                                            (2, 0, 0), (3, 0, 0), (0, 1, 0), (1, 1, 0)}),
                 "Orange": cls("Orange", {(0, 0, 0), (1, 0, 0), (1, 0, 1),
                                          (2, 0, 0), (3, 0, 0), (3, 0, 1), (1, 1, 0)}),
-                "Green": cls("Green", {(0, 0, 0), (0, 0, 1), (1, 0, 0),
+                "Lime": cls("Lime", {(0, 0, 0), (0, 0, 1), (1, 0, 0),
                                        (2, 0, 0), (2, 0, 1), (0, 1, 0)}),
-                "Forest": cls("Forest", {(0, 0, 0), (1, 0, 0),
+                "Green": cls("Green", {(0, 0, 0), (1, 0, 0),
                                          (1, 0, 1), (2, 0, 0), (2, 0, 1), (1, 1, 0)}),
                 "Cyan": cls("Cyan", {(0, 0, 0), (1, 0, 0), (1, 0, 1),
                                      (2, 0, 0), (2, 0, 1), (3, 0, 0), (1, 1, 0)}),
