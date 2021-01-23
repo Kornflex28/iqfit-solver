@@ -16,7 +16,7 @@ The implementation does not use Knuth's Dancing Links because Python dictionarie
 
 ## Interactive app using Kivy
 
-Interactive App to set initial conditions and display a solution (multiple solutions possible).
+Interactive App to set initial conditions and display a solution (multiple solutions possible, the solver found 301350 solutions with an empty board as initial condition).
 
 Initial conditions         |  Final solution
 :-------------------------:|:-------------------------:
