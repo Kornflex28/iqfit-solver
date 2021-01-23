@@ -2,7 +2,7 @@
 
 ## IQ FIT
 [IQ FIT](https://www.smartgames.eu/uk/one-player-games/iq-fit) is a game made by [Smart Games®](https://www.smartgames.eu/uk) where one has fit all the 3D-puzzle pieces on the game board in such a way that it turns into a (flat) 2D-image.  
-One of the protruding sides of each puzzle piece has 1 ball, the other side has 2 balls. So depending on how you orientate a puzzle piece, you get more or less balls.When solved, all puzzle pieces will fit on the game board without any holes uncovered.
+One of the protruding sides of each puzzle piece has 1 ball, the other side has 2 balls. So depending on how you orientate a puzzle piece, you get more or less balls. When solved, all puzzle pieces will fit on the game board without any holes uncovered.
 
 Initial conditions         |  Final solution
 :-------------------------:|:-------------------------:
