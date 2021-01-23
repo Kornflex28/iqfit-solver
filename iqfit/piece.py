@@ -39,8 +39,8 @@ class Piece:
             piece[y, x, z] = 1
         return piece
 
-    def translate_piece(self,dx=0,dy=0):
-        return Piece(self.name,{(x+dx,y+dy,z) for x,y,z in self.coordinates})
+    def translate_piece(self, dx=0, dy=0):
+        return Piece(self.name, {(x+dx, y+dy, z) for x, y, z in self.coordinates})
 
     def get_transformations(self):
         piece = self.to_array()
@@ -53,31 +53,30 @@ class Piece:
         return [self.from_array_to_2D_coordinates(array) for array in self.from_array_get_2D_rotations(piece)+self.from_array_get_2D_rotations(piece_rot3D)]
 
     def get_2D_coordinates(self):
-        return {(x,y) for x,y,z in self.coordinates if z==0}
+        return {(x, y) for x, y, z in self.coordinates if z == 0}
 
     @classmethod
-    def from_array_to_coordinates(cls,array):
+    def from_array_to_coordinates(cls, array):
         return set([(y, x, z) for x in range(array.shape[0]) for y in range(array.shape[1]) for z in range(array.shape[2]) if array[x, y, z]])
 
     @classmethod
-    def from_array_to_2D_coordinates(cls,array):
+    def from_array_to_2D_coordinates(cls, array):
         return set([(y, x) for x in range(array.shape[0]) for y in range(array.shape[1]) if array[x, y, 0]])
 
     @classmethod
     def from_array(cls, name, array):
-        return cls(name=name, coordinates=cls.from_array_to_coordinates(array))  
+        return cls(name=name, coordinates=cls.from_array_to_coordinates(array))
 
     @classmethod
     def from_array_rotate_3D(cls, array):
         ax = np.argmax(array.shape[:2])
         n_rot = 1 + 2 * array.sum(axis=ax).argmax(axis=0)[0]
-        rot_axs= tuple(i for i in range(3) if i !=ax)
-        # print(ax,rot_axs)
+        rot_axs = tuple(i for i in range(3) if i != ax)
         return np.rot90(array, k=n_rot, axes=rot_axs)
 
     @classmethod
     def from_array_get_2D_rotations(cls, array):
-        return [np.rot90(array, k=k, axes=(0,1)) for k in range(4)]
+        return [np.rot90(array, k=k, axes=(0, 1)) for k in range(4)]
 
     @classmethod
     def iqfit_pieces(cls):
@@ -87,15 +86,15 @@ class Piece:
                 "Red": cls("Red", {(0, 0, 0), (0, 0, 1), (1, 0, 0),
                                    (2, 0, 0), (3, 0, 0), (3, 0, 1), (0, 1, 0)}),
                 "DeepSkyBlue": cls("DeepSkyBlue", {(0, 0, 0), (0, 0, 1), (1, 0, 0),
-                                   (2, 0, 0), (2, 0, 1), (3, 0, 0), (0, 1, 0)}),
+                                                   (2, 0, 0), (2, 0, 1), (3, 0, 0), (0, 1, 0)}),
                 "Magenta": cls("Magenta", {(0, 0, 0), (1, 0, 0), (1, 0, 1),
                                            (2, 0, 0), (3, 0, 0), (0, 1, 0), (1, 1, 0)}),
                 "Orange": cls("Orange", {(0, 0, 0), (1, 0, 0), (1, 0, 1),
                                          (2, 0, 0), (3, 0, 0), (3, 0, 1), (1, 1, 0)}),
                 "Lime": cls("Lime", {(0, 0, 0), (0, 0, 1), (1, 0, 0),
-                                       (2, 0, 0), (2, 0, 1), (0, 1, 0)}),
+                                     (2, 0, 0), (2, 0, 1), (0, 1, 0)}),
                 "Green": cls("Green", {(0, 0, 0), (1, 0, 0),
-                                         (1, 0, 1), (2, 0, 0), (2, 0, 1), (1, 1, 0)}),
+                                       (1, 0, 1), (2, 0, 0), (2, 0, 1), (1, 1, 0)}),
                 "Cyan": cls("Cyan", {(0, 0, 0), (1, 0, 0), (1, 0, 1),
                                      (2, 0, 0), (2, 0, 1), (3, 0, 0), (1, 1, 0)}),
                 "Purple": cls("Purple", {(0, 0, 0), (0, 0, 1),

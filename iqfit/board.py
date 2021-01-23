@@ -36,7 +36,7 @@ class Board:
             print(f"Piece {piece.name} can't fit on board.")
         return self.current_board
 
-    def from_2D_put_piece_on_board(self, name,coords_2D):
+    def from_2D_put_piece_on_board(self, name, coords_2D):
         if coords_2D.issubset(self.get_empty_coordinates()):
             for x, y in coords_2D:
                 self.current_board[(x, y)] = name
@@ -56,4 +56,3 @@ class Board:
                     if dp_2D_coords.issubset(self.get_empty_coordinates()) and dp not in possible_coordinates:
                         possible_coordinates.append(dp)
         return possible_coordinates
-
