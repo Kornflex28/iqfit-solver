@@ -1,4 +1,8 @@
 # iqfit-solver
+![Python](https://img.shields.io/badge/Python%20-%2314354C.svg?&style=flat-square&logo=python&logoColor=white)
+<br>
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://github.com/Kornflex28/iqfit-solver/blob/main/LICENSE)
+![GitHub last commit](https://img.shields.io/github/last-commit/Kornflex28/iqfit-solver?style=flat-square)
 
 ## IQ FIT
 [IQ FIT](https://www.smartgames.eu/uk/one-player-games/iq-fit) is a game made by [Smart Games®](https://www.smartgames.eu/uk) where one has fit all the 3D-puzzle pieces on the game board in such a way that it turns into a (flat) 2D-image.  
